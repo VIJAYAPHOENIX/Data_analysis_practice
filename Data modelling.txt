@@ -1,0 +1,153 @@
+Data modelling
+
+Power Pivot vs PQE
+
+PQE ---> ETL (Extract, Transform, Load), M-Language(mashup), Transformations.
+Power Pivot ---> DAX(Data Analytics/Analysis Expressions), Transformations.
+
+-----------------------------------------------------------------
+Difference between Inmemory Columnar database and traditional datadases,
+
+Traditional databases /RDBMS
+Eg: MYSQL, SQL Server, Oracle Etc.
+-> Data is stored in row format.
+-> Data is stored in disk and accessed from the list.
+-> Data is not compressed and using more space.
+
+InMemory Columnar database
+-> When we create the reports on InMemory Columnar database, Performance is good when compared to RDBMS.
+-> Data is stored in RAM and accessed from RAM.
+-> Data is stored in column format.
+-> Data is highly compressed.
+
+Vertipaq Engine/ Xvelocity Engine
+-> This is internally available in power pivot.
+-> During the time of loading data from PQE to power BI Desktop this engine comes into picture.
+-> This will reduce the size of data to the 1/10th of the original size of data.
+-------------------------------------------------------------------
+
+Power BI Licenses 
+
+capacity of data by various licenses are :
+pro -> 1GB
+premium -> 10GB 
+
+If we work on a larger datasets like 100GB datasets then it will be a burden for both user and power to import the data,
+So then the connecting models come to picture.
+
+--------------------------------------------------------------------
+
+Connecting Models
+
+Import  --> Data present in power BI
+Direct Query --> For larger datasets --> This has the information of columns and tables.(scheduled refresh)
+Live --> Large datasets --> It is also contain the information of columns and tables.(Continuous refresh)
+
+
+MSBI and Cloud
+
+PQE (ETL) --> SSIS --> Data Bricks.
+Power Pivot & Data Modelling --> SSAS.
+Power View --> Power BI/Tableau.
+To store the models --> Azure Analysis service or SSMS.
+Pipeline --> Azure Data Factory.
+Publish the reports --> SSRS, PBI Service.
+
+Process:
+	Large data -> Direct Query -> Alternate solution is SSAS.
+	Large data -> SSAS --> To store models(SSMS/AAS) -->Direct Query --> PBI
+
+--------------------------------------------------------------------
+What is data modelling?
+--> When ever you have a multiple tables to create visuals we use this modelling techniques.
+
+What is relationship and types of relationships.
+--> It is a connection or common link between to or more tables. Have a common column present in all.
+
+Types of relationships/ cardinality
+One - One
+One - Many
+Many - One
+Many - Many
+
+How do we establish a new relationship?
+Edit Relationship.
+Delete relationship.
+Auto relationship.
+File --> Option & Settings --> Options --> Current File --> Data load --> Checkbox(Auto detect relationship when data is loaded).
+--> Either column name must be same.
+--> Datatype of column name must be same.
+  
+--------------------------------------------------------
+Cross Filter Direction
+--> It is direction of the relationship between two tables.
+
+--------------------------------------------------------
+Assume Referential Integrity
+-->* This will only work on Direct Query Tables.
+--> It will work if the from tables has no null or empty values.
+--> Each record from the tables must have a match in to table.
+-->* the join performed is inner join.
+
+--------------------------------------------------------
+Schema/Models in Power BI
+
+Dimensional column
+--> It can be known for the distinct columns or fields.
+--> It has the columns that has details of a column or fields.
+--> Eg: Market, Country, City, Names etc..
+
+Fact column
+--> It contain the columns which can perform aggregate funtions
+--> Eg: Sales, Profit, Quantity etc..
+
+Dimension Table
+--> It contains a primary key and dimensional columns.
+
+Fact Table
+--> It contains a Foreign key and fact columns.
+
+What is schema/Model?
+--> Dimensional tables and Fact tables combine is schema.
+
+Types of Schemas
+Star schema
+--> In this schema multiple dimensional tables connect to a fact table through primary and foreign keys.
+advantages
+-> Simple
+-> Performance is faster
+-> Flexible
+---------------------------------------------------------
+Snowflake Schema
+--> It is an extension of a star schema.
+--> It consists of fact table and dimensional tables which are interlinked with multiple dimension tables.
+Features
+-> Normalization of data
+-> Complex
+-> Data Integrity
+--------------------------------------------------------
+Galaxy Schema
+--> It is a combination of two or more star schemas.
+
+--------------------------------------------------------
+
+**Which schema is better to improve the performance of Power BI dashboard? - Star Schema
+**Which schema works faster? - Star Schema
+**Join performed i Power BI is -- Outer join
+**How many relationships can be established between two tables? - More than one
+**How many active relationships can be established between two tables? - One
+
+PQE -- 10%
+Data Modelling -- 40%
+Power Pivot -- 30%
+Power view -- 5%
+Power BI service -- 15%
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,381 @@
+Power pivot 
+
+UI of Power Pivot / Data View
+	->
+DAX
+Basic syntax of DAX
+-> Columnname/Tablename/Measurename = FUNCTION(Tablename[columnname])
+-------------------------------------------------------
+Differences between New column, New Measure, New Table.
+-> New Column - Scalar Function.
+-> New Measure - Aggregate Function.
+-> New Table -
+-------------------------------------------------------
+DAX Operators
+- Arithematic Operators.
+	->DIVIDE -> DIVIDE = Global_Superstore[Sales] / 80
+- Comparison operators.
+- Assignment Operators.
+- String Concatenation operator.
+	--> JOINTXT = Global_Superstore[Market] & " " & Global_Superstore[Segment]
+- Logical Operators.
+------------------------------------------------------
+DAX functions - 130
+------------------------------------------------------
+1. Text Functions - 14
+
+COMBINEVALUES - COMBINEVALUE = COMBINEVALUES("@",Global_Superstore[Market],Global_Superstore[Segment]) 
+--> Combines number of value with a delimeter.
+
+CONCATENATE - CONCATENATE = CONCATENATE(Global_Superstore[Market],Global_Superstore[Segment])
+--> Combine only two values without any delimeter.
+
+UPPER - UPPER = UPPER(Global_Superstore[Customer_Name])
+
+LOWER - LOWER = LOWER(Global_Superstore[Customer_Name])
+
+LEFT - LEFT = LEFT(Global_Superstore[Customer_Name],3)
+
+RIGHT - RIGHT = RIGHT(Global_Superstore[Customer_Name],4)
+
+MID - MID = MID(Global_Superstore[Customer_Name],4,3)
+
+FIND - FIND = FIND("a", Global_Superstore[Customer_Name],1,BLANK())
+--> Case Sensitive
+
+SEARCH - SEARCH = SEARCH("A",Global_Superstore[Customer_Name],1,BLANK())
+--> Case Insensitive
+
+REPLACE - REPLACE = REPLACE(Global_Superstore[Customer_Name],2,4, "@")
+--> It is used to replace the positions.
+--> Here first number represents starting position value.
+--> Second number represent no. values after the starting position.
+
+SUBSTITUTE - substitute = SUBSTITUTE(Global_Superstore[Customer_Name],"a","@",1)
+--> It is case sensitive.
+--> Here first and second values represent actual value and substitute values.
+--> Last value represent the instance of the substitute.It says when should it trigger.
+
+TRIM - TRIM = TRIM('sample'[Name])
+
+LEN - LENGTH = LEN('sample'[Name])
+
+REPT - REPT = REPT(LEFT(Global_Superstore[Customer_Name],3),2)
+--> It is used repeat the value assigned column respected times.
+
+FORMAT -- DATE AND TIME FUNCTIONS - 
+------------------------------------------------------
+2. Parent Child Functions - 5
+
+Path
+- Path1 = PATH('Parent_Child'[Employee_ID],Parent_Child[Manager_ID])
+- Path2 = PATH(Parent_Child[Employee_Name],Parent_Child[Manager_Name])
+
+Path_contains 
+- Path_contains = PATHCONTAINS(Parent_Child[Path2],"Linda")
+- Path_contains2 = PATHCONTAINS(PATH(Parent_Child[Employee_ID],Parent_Child[Manager_ID]),11)
+
+Path_Item
+- Path_item = PATHITEM(Parent_Child[Path2],4,TEXT)
+- Path_item = PATHITEM(Parent_Child[Path1],4,INTEGER)
+
+Path_Item_Reverse
+- Path_Item_Reverse = PATHITEMREVERSE(Parent_Child[Path2],4,TEXT)
+- Path_Item_Reverse = PATHITEMREVERSE(Parent_Child[Path1],4,INTEGER)
+
+Path_Lenth
+- Path_Length = PATHLENGTH(Parent_Child[Path1])
+-------------------------------------------------------
+3. Numeric/stats/Maths/Trig/Financal - 18
+
+ABS -> ABS = ABS(Global_Superstore[Profit])
+EVEN -> EVEN = EVEN(Global_Superstore[Sales])
+ODD -> ODD = ODD(Global_Superstore[Sales])
+DIVIDE -> DIVIDE = Global_Superstore[Sales] / 80
+LOG -> LOG = LOG(Global_Superstore[Sales])
+LOG10 -> LOG10 = LOG10(Global_Superstore[Sales])
+SIGN -> SIGN = SIGN(Global_Superstore[Profit])
+SIN -> SIN = SIN(Global_Superstore[Sales])
+COS -> COS = COS(Global_Superstore[Sales])
+TAN -> TAN = TAN(Global_Superstore[Sales])
+POWER -> POWER = POWER(Global_Superstore[Quantity],2)
+SQRT -> SQRT = SQRT(Global_Superstore[POWER])
+CURRENCY -> CURRENCY = CURRENCY(Global_Superstore[Sales])
+ROUND -> ROUND = ROUND(Global_Superstore[Sales],1)
+ROUNDUP -> ROUNDUP = ROUNDUP(Global_Superstore[Sales],0)
+ROUNDDOWN -> ROUNDDOWN = ROUNDDOWN(Global_Superstore[Sales],0)
+RAND -> RAND = RAND()
+RANDBETWEEN -> RAND_BETWEEN = RANDBETWEEN(100,200)
+MEDIAN -> MEDIAN = MEDIAN(Global_Superstore[Sales])
+STD -> STDEV = STDEV.P(Global_Superstore[Sales])
+VAR -> VARIENCE = VAR.P(Global_Superstore[Sales])
+
+-------------------------------------------------------
+4. Aggregate Functions - 10
+
+SUM - SUM = SUM(Countfuntions[Sales])
+
+SUMX - SUMX = SUMX(FILTER(Countfuntions,Countfuntions[Market] = "APAC"),Countfuntions[Sales])
+
+AVG - AVERAGE = AVERAGE(Countfuntions[Sales])
+
+AVGX - AVERAGEX = AVERAGEX(FILTER(Countfuntions, Countfuntions[Market] = "US"),Countfuntions[Sales])
+
+MIN - MIN = MIN(Countfuntions[Sales])
+
+MINX - MINX = MINX(FILTER(Countfuntions,Countfuntions[Market] = "US"),Countfuntions[Sales])
+
+MAX - MAX = MAX(Countfuntions[Sales])
+
+MAXX - MAXX = MAXX(FILTER(Countfuntions,Countfuntions[Market] = "US"),Countfuntions[Sales])
+
+PRODUCT - PRODUCT = PRODUCT(Countfuntions[Sales])
+
+PRODUCTX - PRODUCTX = PRODUCTX(FILTER(Countfuntions,Countfuntions[Market] = "US"),Countfuntions[Sales])
+
+-------------------------------------------------------
+5. Count functions - 6
+
+COUNTROWS - COUNTROWS = COUNT(Countfuntions[Market] )
+
+COUNTBLANKS - COUNTBLANKS = COUNTBLANK(Countfuntions[Market])
+
+DISTINCTCOUNT - DISTINCTCOUNT = DISTINCTCOUNT(Countfuntions[Market])
+--> It include blanks also.
+
+DISTINCTCOUNTNOBLANK - DISTINCTCOUNTNOBLANK = DISTINCTCOUNTNOBLANK(Countfuntions[Market])
+
+COUNT - COUNT = COUNT(Countfuntions[Market])
+
+COUNTX - COUNTX = COUNTX(FILTER(Countfuntions,Countfuntions[Market] = "US"),Countfuntions[Sales])
+-------------------------------------------------------
+6. Date and Time Functions - 20
+
+CALENDER - CALENDER = CALENDAR(DATE(2001,1,1),DATE(2025,10,10))
+--> It creates a separate table.
+--> We have to give a starting and ending dates.
+
+CALENDERAUTO - CALENDERAUTO = CALENDARAUTO()
+--> It is created on a separate table.
+--> It takes the starting and ending dates automatically takes by the reference table.
+
+DATE & TIME - DATE1 = DATE(2022,10,10) & " "  & TIME(12,03,23)
+
+NOW - NOW = NOW()
+
+UTCNOW - UTCNOW = UTCNOW()
+
+TODAY - TODAY = TODAY()
+
+UTCTODAY - UTCTODAY = UTCTODAY()
+
+YEAR - YEAR = YEAR(CALENDERAUTO[Date])
+
+MONTH - MONTH = MONTH(CALENDER[Date])
+      - MONTH1 = FORMAT(CALENDER[Date],"MMMM")
+
+QUARTER - QUARTER = QUARTER(CALENDERAUTO[Date])
+	- QUARTER1 = SWITCH(CALENDERAUTO[QUARTER],1,"QTR1",2,"QTR2",3,"QTR3",4,"QTR4")
+	- QUARTER3 = FORMAT(CALENDERAUTO[Date],"\QTR Q")
+
+
+DAY - DAY = DAY(CALENDER[Date])
+    - DAY1 = FORMAT(CALENDER[Date],"DDDD")
+
+WEEKDAY - WEEKDAYS = WEEKDAY(CALENDER[Date].[Date])
+
+WEEKNUM -WEEKNUM = WEEKNUM(CALENDER[Date],2)
+
+HOUR -  HOUR = HOUR(CALENDER[NOW])
+
+MINUTE - MINUTES = MINUTE(CALENDER[NOW])
+
+SECONDS - SECONDS = SECOND(CALENDER[NOW])
+
+EDATE - EDATE = EDATE(CALENDER[NOW],2)
+--> It gives the next exact date after month we decide.
+
+EOMONTH - EOMONTH = EOMONTH(CALENDER[NOW],2)
+--> It gives the last date of the upcoming months respectively.
+
+DATEDIFF - DATEDIFF = DATEDIFF(CALENDER[UTCNOW],CALENDER[EOMONTH],DAY)
+--> It shows the time between two given dates in min,hrs,mon,yrs,qtr.
+
+-----------------------------------------------------
+7. Time intelligence - 20
+
+PROCESS
+1.Import data - First of all import the data to perform the calulations.
+2.Create datatable - create a datatable using CALENDER or CALENDERAUTO.
+3.Establish Relationship - Create a relationship between datetable date column and datatable date column.
+4.Mark as datatable - RightClick on datatable --> Select mark as datetable --> In the new window select date column in dropdown --> Click ok.
+
+PREVIOUS YEAR - PREVIOUSYEAR = CALCULATE(SUM(Global_Superstore[Sales]),PREVIOUSYEAR(DATETABLE[Date]))
+
+PREVIOUSQUARTER - PREVIOUSQUARTER = CALCULATE(SUM(Global_Superstore[Sales]),PREVIOUSQUARTER(DATETABLE[Date]))
+
+PREVIOUSMONTH - PREVIOUSMONTH = CALCULATE(SUM(Global_Superstore[Sales]),PREVIOUSMONTH(DATETABLE[Date]))
+
+PREVIOUSDAY - PREVIOUSDAY = CALCULATE(SUM(Global_Superstore[Sales]),PREVIOUSDAY(DATETABLE[Date]))
+
+NEXTYEAR - NEXTYEAR = CALCULATE(SUM(Global_Superstore[Sales]),NEXTYEAR(DATETABLE[Date]))
+
+NEXTQUARTER - NEXTQUARTER = CALCULATE(SUM(Global_Superstore[Sales]),NEXTQUARTER(DATETABLE[Date]))
+
+NEXTMONTH - NEXTMONTH = CALCULATE(SUM(Global_Superstore[Sales]),NEXTMONTH(DATETABLE[Date]))
+
+NEXTDAY - NEXTDAY = CALCULATE(SUM(Global_Superstore[Sales]),NEXTDAY(DATETABLE[Date]))
+
+STARTOFYEAR - STARTOFYEAR = CALCULATE(SUM(Global_Superstore[Sales]),STARTOFYEAR(DATETABLE[Date]))
+
+STARTOFQUARTER - STARTOFQUARTER = CALCULATE(SUM(Global_Superstore[Sales]),STARTOFQUARTER(DATETABLE[Date]))
+
+STARTOFMONTH - STARTOFMONTH = CALCULATE(SUM(Global_Superstore[Sales]),STARTOFMONTH(DATETABLE[Date]))
+
+ENDOFYEAR - ENDOFYEAR = CALCULATE(SUM(Global_Superstore[Sales]),ENDOFYEAR(DATETABLE[Date]))
+
+ENDOFQUARTER - ENDOFQUARTER = CALCULATE(SUM(Global_Superstore[Sales]),ENDOFQUARTER(DATETABLE[Date]))
+
+ENDOFMONTH - ENDOFMONTH = CALCULATE(SUM(Global_Superstore[Sales]),ENDOFMONTH(DATETABLE[Date]))
+
+DATESYTD - DATESYTD = CALCULATE(SUM(Global_Superstore[Sales]),DATESYTD(DATETABLE[Date]))
+
+DATESQTD - DATESQTD = CALCULATE(SUM(Global_Superstore[Sales]),DATESQTD(DATETABLE[Date]))
+
+DATESMTD - DATESMTD = CALCULATE(SUM(Global_Superstore[Sales]),DATESMTD(DATETABLE[Date]))
+
+YOY & YOY% - YOY = DIVIDE(SUM(Global_Superstore[Sales]) - [PREVIOUSYEAR],[PREVIOUSYEAR])
+	 --> YOY = ROUND(DIVIDE(SUM(Global_Superstore[Sales]) - [PREVIOUSYEAR],[PREVIOUSYEAR]),2)*100 & "%"
+
+QOQ & QOQ% - QOQ = ROUND(DIVIDE(SUM(Global_Superstore[Sales]) - [PREVIOUSQUARTER],[PREVIOUSQUARTER])*100,2)
+	 --> QOQ = ROUND(DIVIDE(SUM(Global_Superstore[Sales]) - [PREVIOUSQUARTER],[PREVIOUSQUARTER])*100,2) & "%"
+
+--------------------------------------------------------
+8. Relationship Functions - 4
+
+
+--------------------------------------------------------
+9. Filter Functions - 7
+
+CALCULATE & FILTER - 
+
+ALL - ALLTABLE = CALCULATE(SUM(Global_Superstore[Sales]),ALL(Global_Superstore))
+--> It ignores all the the filters in the table applied to it.
+
+Column Reference - ALLCOLUMN = CALCULATE(SUM(Global_Superstore[Sales]),ALL(Global_Superstore[Market]))
+--> It ignore only those fields are applied in the DAX.
+
+ALLEXCEPT - ALLEXCEPT = CALCULATE(SUM(Global_Superstore[Sales]),ALLEXCEPT(Global_Superstore,Global_Superstore[Market]))
+--> It only takes filter which are used first and ignore other.
+
+ALLSELECTED
+Table Reference - ALLSELECTED = CALCULATE(SUM(Global_Superstore[Sales]),ALLSELECTED(Global_Superstore))
+--> It is applicable for all the filters.
+
+Column Reference - ALLSECCOL = CALCULATE(SUM(Global_Superstore[Sales]),ALLSELECTED(Global_Superstore[Market]))
+--> It is also apllicable for all the filters in the table / page.
+
+REMOVE FILTERS
+- REMOVEFILTERS = CALCULATE(SUM(Global_Superstore[Sales]),REMOVEFILTERS(Global_Superstore))
+- REMOVEFILTERS = CALCULATE(SUM(Global_Superstore[Sales]),REMOVEFILTERS(Global_Superstore[SEGMENT]))
+
+KEEP FILTERS - KEEPFILTERS = CALCULATE(SUM(Global_Superstore[Sales]),KEEPFILTERS(Global_Superstore[Market] = "US" || Global_Superstore[Market] = "APAC"))
+--> It gives the rights to keep filters on a certain fields / Types.
+
+--------------------------------------------------------
+10. Information functions - 11
+
+ISODD - ISODD = ISODD(INFORMATION_FUNCTIONS[SALES])
+
+ISEVEN - ISEVEN = ISEVEN(INFORMATION_FUNCTIONS[SALES])
+
+ISNUMBER - ISNUMBER = ISNUMBER(INFORMATION_FUNCTIONS[SALES])
+
+ISTEXT - ISTEXT = ISTEXT(INFORMATION_FUNCTIONS[NAMES])
+
+ISNONTEXT - ISNONTEXT = ISNONTEXT(INFORMATION_FUNCTIONS[SALES])
+
+ISEMPTY - ISEMPTY = ISEMPTY(INFORMATION_FUNCTIONS)
+
+ISBLANK - ISBLANK = ISBLANK(INFORMATION_FUNCTIONS[NAMES])
+
+ISERROR - ISERROR = ISERROR(INFORMATION_FUNCTIONS[NAMES])
+
+USERNAME - USERNAME = USERNAME()
+
+USERPRINCIPLENAME - USERPRINCIPLENAME = USERPRINCIPALNAME()
+
+USEROBJECTI - USEROBJEJECT = USEROBJECTID()
+
+---------------------------------------------------------------
+11. Logical Functions - 5
+
+AND - (&&)
+--> APACUS200 = CALCULATE(SUM(Countfuntions[Sales]) , FILTER(Countfuntions,Countfuntions[Market] = "APAC" && Countfuntions[Sales] > 200 || Countfuntions[Market] = "US" && Countfuntions[Sales] > 200 ))
+
+OR - (||)
+--> APACUS = CALCULATE(SUM(Countfuntions[Sales]), FILTER(Countfuntions,Countfuntions[Market] = "APAC" || Countfuntions[Market] = "US"))
+
+NOT - (<>)
+--> APACUSRAN = CALCULATE(SUM(Countfuntions[Sales]), FILTER(Countfuntions,Countfuntions[Market] = "APAC" && Countfuntions[Sales] <> 120 || Countfuntions[Market] = "US" && Countfuntions[Sales] <> 160))
+
+IF - IFELSE = IF(Countfuntions[Market] = "US", "UNITED STATES","NOTHING")
+   - IFELSE = IF(Countfuntions[Market] = "US", "UNITED STATES", IF(Countfuntions[Market] = "APAC", "ASIAPACIFIC"))
+   - IFELSE = IF(Countfuntions[Market] = "US", "UNITED STATES", IF(Countfuntions[Market] = "APAC", "ASIAPACIFIC", IF(Countfuntions[Market] = "EMEA", "EUROPE","NOTHING")))
+
+SWITCH - QUARTER1 = SWITCH(CALENDERAUTO[QUARTER],1,"QTR1",2,"QTR2",3,"QTR3",4,"QTR4")
+--------------------------------------------------------------------
+12.Table Manipulation Functions - 12
+
+DISTINCT (TABLE) - DISTINCTTABLE = DISTINCT(EMPLOYEE)
+--> It checks each and every value in all columns and give distinct records.
+
+DISTINCT (COLUMN) - DISTINCTCOL = DISTINCT(EMPLOYEE[EID])
+--> It check for duplicates in a single column.
+
+UNION - It union the two tables. But it comes with duplicate values.
+	--> UNION = UNION(STUDENT1,STUDENT2)
+	--> UNIONDISTINCT = DISTINCT('UNION')
+
+INTERSECT - It gives the common records in the both tables. (LEFT TABLE)
+	--> INTERSECT = INTERSECT(STUDENT1,STUDENT2)
+
+EXCEPT - It gives the left table values which are non common on both tables.
+	--> except = EXCEPT(STUDENT1,STUDENT2)
+
+CROSSJOIN - 
+NATURALINNERJOIN - 
+NATURALLEFTOUTERJOIN - 
+GROUPBY - 
+CURRENTGROUP - 
+SUMMARIZE - 
+ADDCOLUMNS - 
+TOPN - 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

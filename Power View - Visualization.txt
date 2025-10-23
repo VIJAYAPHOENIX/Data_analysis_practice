@@ -1,0 +1,145 @@
+Power View - Visualizations
+
+What and why is visualization?
+--> Easy understanding of data.
+--> Faster insights.
+--> Engage with Filters to deep dive into data faster.
+--> Effective Communication.
+
+Categorical data / Discrete data
+--> It can be countable without a decimal point.
+--> E.g.: Market, segment, Gender, Quantity etc..
+
+Numerical data / Continuous data / Series of data
+--> It contains decimal values.
+--> E.g. sales, speed etc..
+
+---------------------------------------------------------
+Visuals
+---------------------------------------------------------
+Categorical data - Done
+
+Pie Chart -- 1 Categorical column , 1 numerical column, <= 7 distinct value or groups
+Donut chart -- 1 Categorical column , 1 numerical column, <= 10 distinct value or groups
+Tree map -- 1 Categorical column , 1 numerical column, <= 15 - 20 distinct value or groups
+
+>Below Chart are come to picture when we have 20 groups and 1 numeric, 2 categorical columns.
+-- Horizontal display is bars.
+-- Vertical display is columns.
+
+Stacked Bar Chart & Stacked Column Chart --> Displays individual sub groups in the same bar by summarization.
+100% Stacked Bar Chart & 100% Stacked Column Chart --> Displays individual sub groups in the same bar by calculating the percentage.
+Clustered Bar Chart & Clustered Column Chart --> Displays each sub groups in a group as a cluster together.
+
+---------------------------------------------------------
+Continuous data / Series data - Done
+
+Line Chart --> 2 categorical, 1 numerical columns is take for better visual.
+Ribbon Chart --> 2 categorical, 1 numerical columns is take for better visual.
+Area Chart --> 2 categorical, 1 numerical columns is take for better visual. But it shows values individually unlike stacked charts.
+Stacked Area Chart --> 2 categorical, 1 numerical columns is take for better visual. But it shows values stacked in a manner.
+Line and Stacked Column Chart --> 2 categorical, 2 numerical columns is take for better visual. But it shows values stacked.
+Line and Clustered Column Chart --> 2 categorical, 1 numerical columns is take for better visual. But it shows values individually unlike stacked charts.
+Scatter Chart --> --> 2 categorical, 1 numerical columns is take for better visual. It is like x,y graphs from school.
+
+---------------------------------------------------------
+Filter and Slicers - Done
+
+Slicers --> This is used by the viewer/client/end-user who uses the report.
+
+Date and Time - Vertical, List, Tile, Dropdown, Between, Relative date, Relative Time.
+Text Slicer - Vertical, List, Tile, Dropdown.
+Numeric Slicer - Vertical, List, Tile, Dropdown, Between, Greater than equal to, Less than equal to.
+
+Filters -- It is used by the developer in order to restrict the data.
+
+Filter on visual.
+Filter on page.
+Filter on all pages.
+
+---------------------------------------------------------
+Other Visuals
+
+Maps (Map, Filled Map, Shape Map) - Done
+Card, Multicard - Done
+Table, Matrix - Done
+Waterfall Chart - Done
+Funnel Chart - Done
+Q & A - Done
+KPI (Key Performance Indicator) - Done
+Guage
+R / Python - Done
+Key Influencers --> explains the correlations for a metric of a dataset - Done
+Decomposition Tree - Done
+Smart Narrative
+
+---------------------------------------------------
+Hierarchy - Done
+Drill Reports(Options) -- > Help to drill the same report to the next levels in the same visual.
+Drill Down -->  Activate the drill down options.
+Drill Up --> Helps to come back to the previous level in the hierarchy.
+Go to the next level in the hierarchy - It takes to the next level by summation.
+	For Example : If i ask to go to next level from year to quarter this will display 4 quarters for 
+all the years.
+		Sum of quarter 1 for all the years in the date.
+Expand all down one level in the hierarchy - Drill down the report to the next level for all different years. 
+
+Drill Through - Done
+-->This will drill the data frompage one to another page.
+--> Cross Report activation.
+--> Drill Field.
+--------------------------------------------------
+Tolltip - Done
+1. Select a new page --> Select canvas settings --> select the tooltip for the size of page.
+2. Design the tooltip.
+3. Select the visual --> select tooltip --> Select the page u designed in the dropdown.
+--------------------------------------------------
+Button, Shapes, Textbox, Images - DONE
+--------------------------------------------------
+Selection & Bookmarks
+--> create a Report.
+--> Add button/Shapes/Images.
+--> Select view tab --> Select selection & Bookmarks.
+--> Select the button then Select the appropriate visuals in the selection pane then click on bookmark and name it.
+--> Select each button and give the action as a appropriate bookmark.
+-------------------------------------------------
+Sync Slicers - Done
+-->To work on sync slicer the first thing is should use same column or field.
+-->We can hid the slicer.
+-->We can sync and unsync the slicers.
+-------------------------------------------------
+Performance Analyser --> It is used to analyze time is taken to each and everything to display the visuals. - Done
+Edit Interactions
+--> It is used to restrict the visuals to interact.
+--> Power view/ Report View --> Format --> Edit interactions.
+--> Circle button to remove the interaction.
+--> Filter button to back to the interactions.
+--------------------------------------------------
+How to import more Visuals
+
+--Scroller
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
